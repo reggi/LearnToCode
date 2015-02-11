@@ -1,0 +1,8 @@
+if c
+if c
+rotateclockwise c
+moveforward c
+moveforward c
+forloop c
+forloop c
+while c
