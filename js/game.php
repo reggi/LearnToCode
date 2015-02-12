@@ -6,12 +6,6 @@ canvas.height = 480;
 document.body.appendChild(canvas);
 var evaluatecode = false;
 
-/*
-
-<?php echo $_GET['level'] ?>
-
-*/
-
 <?php
 if(isset($_GET['level'])) {// this code is similar to the line checker I should write but it is not good enough atm.
 	echo "var currentlevel = " . $_GET['level'] . ";";
