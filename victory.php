@@ -1,38 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>3D Database</title>
-
-<style type='text/css'>
-html {
-       overflow-y: scroll;
-}
-
-    #your_div img {
-        display: none;
-    }
-	.container {
-    border:#666666 solid 1px;
-    padding:4px;
-    background-color:#FFF;
-	width:auto;
-	display:inline-block;
-	float:left;
-}
-.hide_content, .hide_content:active{outline:none;background:none; border-style:none;}
-</style>
+  <meta charset="utf-8">
+  <title>Simple Canvas Game</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-<div style="padding:25px;"><font size="42" > Victory!</font></div>
-<div style="padding:25px;"><font size="10" > Thanks for playing.</font></div>
 
-
-
-
-
-
-
-
+<div style="text-align:center;margin-top:150px">
+  <h1>Victory!</h1>
+  <h2>Thanks for playing.</h2>
+  <a href="http://3d-db.net/learntocode/?level=0" class="button">Play Again</a>
+</div>
 
 </body>
 </html>
