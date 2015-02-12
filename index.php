@@ -1,6 +1,6 @@
-<? include './includes/html.php' ?>
-<?php $level = isset($_GET['level']) ? $_GET["level"] : "1" ?>
-<?php ini_set('display_errors', 'On'); ?>
+<? include "./includes/html.php" ?>
+<?php $level = isset($_GET["level"]) ? $_GET["level"] : "1" ?>
+<?php ini_set("display_errors", "On"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div id='gamecontainer'>
+<div id="gamecontainer">
   <script src="js/game.php<?php echo "?level=".$level ?>"></script>
 </div>
 
@@ -25,7 +25,7 @@
   <div id="btn_reset_disable" class="buttondisable">Reset Level</div>
 </div>
 
-<div class='linebreak'></div>
+<div class="linebreak"></div>
 
 <div id="codecontainer">
   <p>Code</p>
@@ -35,14 +35,14 @@
 
 <div id="commandcontainer">
   <p>Commands</p>
-  <ul id='sortable' class='sortable'>
-    <?php  display_levelcommands($level) ?>
+  <ul id="sortable" class="sortable">
+    <?php display_levelcommands($level) ?>
   </ul>
 </div>
 
-<?php if(isset($_GET['level']) && $_GET['level']>=4) display_variablecontainer() ?>
+<?php if(isset($_GET["level"]) && $_GET["level"]>=4) display_variablecontainer() ?>
 
-<div class='linebreak'></div>
+<div class="linebreak"></div>
 
 </body>
 </html>
