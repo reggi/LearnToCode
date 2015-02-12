@@ -1,3 +1,4 @@
+<?php header('Content-Type: text/javascript');?>
 var canvas = document.createElement("canvas");
 canvas.setAttribute("id", "gamecontainer");
 var ctx = canvas.getContext("2d");
