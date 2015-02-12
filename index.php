@@ -108,7 +108,7 @@ function display_if() {
 	</li>";
 }
 if(isset($_GET['level'])) {// this code is similar to the line checker I should write but it is not good enough atm.
-	$txt_file    = file_get_contents("/var/www/html/learntocode/level/".$_GET['level']."c.txt");
+	$txt_file    = file_get_contents("../level/".$_GET['level']."c.txt");
 	$rows        = explode("\n", $txt_file);
 
 	foreach($rows as $data)

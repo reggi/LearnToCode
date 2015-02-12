@@ -6,23 +6,20 @@ canvas.height = 480;
 document.body.appendChild(canvas);
 var evaluatecode = false;
 
-//todo: write more defensive code. 
-//todo: add white tile grid so screen can redraw / white canvas image. 
-//todo: valid level checking.
-//todo: valid html markup. No duplicate ID's, etc
-//todo: for loop sizing.
-//todo: defensive code for maps. Currently, I believe the code I have to be broken.  
-//todo: remove php entirely from the equation. 
+/*
 
+<?php echo $_GET['level'] ?>
 
-<?php 
-if(isset($_GET['level'])) {// this code is similar to the line checker I should write but it is not good enough atm. 
+*/
+
+<?php
+if(isset($_GET['level'])) {// this code is similar to the line checker I should write but it is not good enough atm.
 	echo "var currentlevel = " . $_GET['level'] . ";";
-	$txt_file    = file_get_contents("/var/www/html/learntocode/level/".$_GET['level'].".txt");
+	$txt_file    = file_get_contents("../level/".$_GET['level'].".txt");
 	$rows        = explode("\n", $txt_file);
 
 	$row_length = sizeof(explode(' ',$rows[0]));
-	
+
 	echo "var mapdata = [
 	";
 	foreach($rows as $y => $data)
@@ -30,31 +27,31 @@ if(isset($_GET['level'])) {// this code is similar to the line checker I should 
 		$row_data = explode(' ', $data);
 		//if($row_length != sizeof($row_data)) { echo "Warning: array mis-match. Although you probably wont see this error."; }
 		for($x = 0; $x < sizeof($row_data); $x++ ){
-			if($row_data[$x] == "1" || $row_data[$x] == "P" || $row_data[$x] == "E" || $row_data[$x] == "0") { 
-				echo "'" . $row_data[$x] . "'" . ", "; 
+			if($row_data[$x] == "1" || $row_data[$x] == "P" || $row_data[$x] == "E" || $row_data[$x] == "0") {
+				echo "'" . $row_data[$x] . "'" . ", ";
 			}
-		} 
+		}
 		echo "
 		"; // add the linebreak between lines of the array for debuging readability.
 	}
 	echo "];";
 } else {
 echo "var mapdata = [
-	'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', 'E', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', 'P', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
-		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 
+	'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', 'E', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', 'P', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
+		'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1',
 		];
 ";
 }
@@ -65,7 +62,7 @@ echo "var mapdata = [
 
 
 
-// Standable Tile 
+// Standable Tile
 var bgTileReady = false;
 var bgTile = new Image();
 bgTile.onload = function () {
@@ -73,7 +70,7 @@ bgTile.onload = function () {
 };
 bgTile.src = "http://www.3d-db.net/learntocode/img/GridTile.png";
 
-// Coin Tile 
+// Coin Tile
 var coinReady = false;
 var coinSprite = new Image();
 coinSprite.onload = function () {
@@ -113,10 +110,10 @@ addEventListener("keyup", function (e) {
 
 
 var reset = function () {
-<?php 
+<?php
 if(isset($_GET['level'])) {
 
-	$txt_file    = file_get_contents("/var/www/html/learntocode/level/".$_GET['level'].".txt");
+	$txt_file    = file_get_contents("../level/".$_GET['level'].".txt");
 	$rows        = explode("\n", $txt_file);
 
 	$row_length = sizeof(explode(' ',$rows[0]));
@@ -125,7 +122,7 @@ if(isset($_GET['level'])) {
 		$row_data = explode(' ', $data);
 
 //		if($row_length != sizeof($row_data)) { echo "Warning: array mis-match. Although you probably wont see this error."; }
-		
+
 		for($x = 0; $x < sizeof($row_data); $x++ ){
 			if($row_data[$x] == "P") { echo "	hero.x =". $x ."*tile.width;
 	hero.y =". $y ."*tile.height;"; }
@@ -159,7 +156,7 @@ var update = function (modifier) {
 //		hero.x += hero.speed * modifier;
 	}
 
-		
+
 	// Are they touching?
 
 };
@@ -171,12 +168,12 @@ var render = function () {
 	// }
 
 //todo: add level variables, quick pass at file validation, command controls
-//also file version for my level format	
-//single for loop to generate my draw funtions. 
+//also file version for my level format
+//single for loop to generate my draw funtions.
 <?php
 if(isset($_GET['level'])) {
 	echo "if (bgTileReady) {";
-	$txt_file    = file_get_contents("/var/www/html/learntocode/level/".$_GET['level'].".txt");
+	$txt_file    = file_get_contents("../level/".$_GET['level'].".txt");
 	$rows        = explode("\n", $txt_file);
 
 	$row_length = sizeof(explode(' ',$rows[0]));
@@ -185,7 +182,7 @@ if(isset($_GET['level'])) {
 		$row_data = explode(' ', $data);
 
 //		if($row_length != sizeof($row_data)) { echo "Warning: array mis-match. Although you probably wont see this error."; }
-		
+
 		for($x = 0; $x < sizeof($row_data); $x++ ){
 			if($row_data[$x] == "1" || $row_data[$x] == "P" || $row_data[$x] == "E") { echo "ctx.drawImage(bgTile,". $x ."*bgTile.width,". $y."*bgTile.height);"; }
 		}
@@ -204,7 +201,7 @@ echo "	if (bgTileReady) {
 if(isset($_GET['level'])) {
 
 	echo "if (coinReady) {";
-	$txt_file    = file_get_contents("/var/www/html/learntocode/level/".$_GET['level'].".txt");
+	$txt_file    = file_get_contents("../level/".$_GET['level'].".txt");
 	$rows        = explode("\n", $txt_file);
 
 	$row_length = sizeof(explode(' ',$rows[0]));
@@ -213,12 +210,12 @@ if(isset($_GET['level'])) {
 		$row_data = explode(' ', $data);
 
 //		if($row_length != sizeof($row_data)) { echo "Warning: array mis-match. Although you probably wont see this error."; }
-		
+
 		for($x = 0; $x < sizeof($row_data); $x++ ){
 			if($row_data[$x] == "E") { echo "ctx.drawImage(coinSprite,". $x ."*bgTile.width,". $y."*bgTile.height);"; }
 		}
 	}
-	
+
 	echo "}";
 } else {
 echo "
@@ -231,9 +228,9 @@ echo "
 ?>
 
 	if (heroReady) {
-	
-		ctx.save(); 
-		
+
+		ctx.save();
+
         ctx.translate( hero.x, hero.y );
 		if(hero.direction == "right") {
 			ctx.rotate(Math.PI/2);ctx.translate( 0,-32 );
@@ -243,8 +240,8 @@ echo "
 			ctx.rotate(Math.PI*(3/2));ctx.translate(  -32,0 );
 		}
 		ctx.drawImage(heroImage, 0, 0);
-		
-		ctx.restore(); 
+
+		ctx.restore();
 	}
 
 
